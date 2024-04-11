@@ -15,23 +15,31 @@
             <a-asset-item id="sailboat-mtl" src="https://raw.githubusercontent.com/Caseycjc/WebAR_BusinessCard/master/Images/uploads_files_897239_ship.mtl"></a-asset-item>
             <img id="linkedinIcon" src="https://raw.githubusercontent.com/Caseycjc/WebAR_BusinessCard/master/Images/linkedinIcon.webp">
         </a-assets>
-
-        <!-- Sailboat Model -->
-        <a-entity obj-model="obj: #sailboat-obj; mtl: #sailboat-mtl" position="0 1 -10" scale="0.5 0.5 0.5"
-                  animation="property: position; to: 0 1.5 -5; loop: true; dur: 1000"
-                  event-set__click="_event: click; scale: 1.2 1.2 1.2">
+    
+        <!-- Sailboat Model, positioned and scaled -->
+        <a-entity obj-model="obj: #sailboat-obj; mtl: #sailboat-mtl"
+                  position="0 0 -2"  <!-- Position the boat ahead -->
+                  scale="0.3 0.3 0.3"  <!-- Adjust scale as needed -->
+                  rotation="0 180 0"  <!-- Rotate the boat to face the user -->
+                  animation="property: rotation; to: 0 540 0; loop: true; dur: 10000">
+                  <!-- Optional: Add rotation animation for dynamic effect -->
         </a-entity>
-
-        <!-- Text for Name and Job Title -->
-        <a-text value="Casey Chase\nSoftware Developer" position="0 2 -3" align="center" color="#FFFFFF"></a-text>
-
-        <!-- LinkedIn Plane -->
-        <a-entity position="1 1 -3"
-                  geometry="primitive: plane; width: 1; height: 1"
-                  material="shader: flat; src: #linkedinIcon"
-                  link="href: https://www.linkedin.com/in/caseycjc/">
+    
+        <!-- LinkedIn Plane, positioned below the user's view -->
+        <a-entity position="0 -1 -2"
+        geometry="primitive: plane; width: 0.5; height: 0.1"
+        material="shader: flat; src: #linkedinIcon"
+        class="clickable"
+        onclick="window.open('https://www.linkedin.com/in/caseycjc/', '_blank');">
 </a-entity>
 
+    
+        <!-- Text for Name and Job Title, positioned in the user's view -->
+        <a-text value="Casey Chase\nSoftware Developer" 
+                position="0 -0.5 -2" 
+                align="center" 
+                color="#FFFFFF">
+        </a-text>
     </a-scene>
 </body>
 </html>
