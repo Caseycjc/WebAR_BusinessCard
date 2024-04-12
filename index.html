@@ -12,7 +12,8 @@
         <a-assets>
             <a-asset-item id="sailboat-obj" src="https://raw.githubusercontent.com/Caseycjc/WebAR_BusinessCard/master/Images/uploads_files_897239_ship.obj"></a-asset-item>
             <a-asset-item id="sailboat-mtl" src="https://raw.githubusercontent.com/Caseycjc/WebAR_BusinessCard/master/Images/uploads_files_897239_ship.mtl"></a-asset-item>
-            <img id="linkedinIcon" src="https://raw.githubusercontent.com/Caseycjc/WebAR_BusinessCard/master/Images/linkedinIcon.webp">
+            <img id="linkedinIcon" src="https://raw.githubusercontent.com/Caseycjc/WebAR_BusinessCard/master/Images/linkedinIcon.png">
+            <img id="githubIcon" src="https://raw.githubusercontent.com/Caseycjc/WebAR_BusinessCard/master/Images/githubicon.png">
         </a-assets>
 
         <!-- Sailboat Model -->
@@ -23,9 +24,16 @@
         </a-entity>
 
         <!-- LinkedIn Plane, positioned below the user's view -->
-        <a-plane position="0 -1.4 -2" width="1" height="1" 
+        <a-plane position="0 -1 -2" width="1" height="1" 
                  material="shader: flat; src: #linkedinIcon"
                  class="clickable">
+        </a-plane>
+
+        <!-- GitHub Plane, positioned at waist level next to LinkedIn -->
+        <a-plane position="0.5 0 -3" width="0.5" height="0.5"
+                 material="shader: flat; src: #githubIcon"
+                 class="clickable"
+                 event-set__click="_target: window; _delay: 0; href: https://github.com/Caseycjc">
         </a-plane>
 
         <!-- Text for Name and Job Title, positioned in the user's view -->
