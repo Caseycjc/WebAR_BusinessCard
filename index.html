@@ -23,20 +23,21 @@
                   rotation="0 180 0">
         </a-entity>
 
-        <!-- LinkedIn Plane, positioned below the user's view -->
+        <!-- LinkedIn Plane -->
         <a-plane position="0 -1 -2" width="1" height="1" 
                  material="shader: flat; src: #linkedinIcon"
-                 class="clickable">
+                 class="clickable"
+                 data-url="https://www.linkedin.com/in/caseycjc/">
         </a-plane>
 
-        <!-- GitHub Plane, positioned at waist level next to LinkedIn -->
+        <!-- GitHub Plane -->
         <a-plane position="0 0 -3" width="1" height="1"
                  material="shader: flat; src: #githubIcon"
                  class="clickable"
-                 event-set__click="_target: window; _delay: 0; href: https://github.com/Caseycjc">
+                 data-url="https://github.com/Caseycjc">
         </a-plane>
 
-        <!-- Text for Name and Job Title, positioned in the user's view -->
+        <!-- Text for Name and Job Title -->
         <a-text value="Casey Chase\nSoftware Developer" 
                 position="0 1.5 -2" 
                 align="center" 
@@ -50,7 +51,9 @@
             const clickableEntities = document.querySelectorAll('.clickable');
             clickableEntities.forEach(entity => {
                 entity.addEventListener('click', () => {
-                    const url = entity.getAttribute('href');
+                    // Retrieve the URL from the data-url attribute
+                    const url = entity.getAttribute('data-url');
+                    // Open the URL in a new tab/window
                     window.open(url, '_blank');
                 });
             });
