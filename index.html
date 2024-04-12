@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <title>Casey Chase AR Business Card</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <!-- Include AR.js for AR capabilities -->
     <script src="https://cdn.jsdelivr.net/npm/ar.js"></script>
 </head>
 <body style="margin : 0px; overflow: hidden;">
-    <a-scene embedded arjs='sourceType: webcam;'>
+    <a-scene embedded arjs='sourceType: webcam; cursor: true;'>
+
         <a-assets>
             <a-asset-item id="sailboat-obj" src="https://raw.githubusercontent.com/Caseycjc/WebAR_BusinessCard/master/Images/uploads_files_897239_ship.obj"></a-asset-item>
             <a-asset-item id="sailboat-mtl" src="https://raw.githubusercontent.com/Caseycjc/WebAR_BusinessCard/master/Images/uploads_files_897239_ship.mtl"></a-asset-item>
@@ -17,43 +17,29 @@
         </a-assets>
 
         <!-- Sailboat Model -->
-        <a-entity obj-model="obj: #sailboat-obj; mtl: #sailboat-mtl"
-                  position="0 0 -4"  
-                  scale="0.3 0.3 0.3" 
-                  rotation="0 180 0">
-        </a-entity>
+        <a-entity obj-model="obj: #sailboat-obj; mtl: #sailboat-mtl" position="0 0 -4" scale="0.3 0.3 0.3" rotation="0 180 0"></a-entity>
 
         <!-- LinkedIn Plane -->
-        <a-plane position="0 -1 -2" width="1" height="1" 
-                 material="shader: flat; src: #linkedinIcon"
-                 class="clickable"
-                 data-url="https://www.linkedin.com/in/caseycjc/">
-        </a-plane>
+        <a-plane position="0 -1 -2" width="1" height="1" material="shader: flat; src: #linkedinIcon" class="clickable" data-url="https://www.linkedin.com/in/caseycjc/"></a-plane>
 
         <!-- GitHub Plane -->
-        <a-plane position="0 0 -3" width="1" height="1"
-                 material="shader: flat; src: #githubIcon"
-                 class="clickable"
-                 data-url="https://github.com/Caseycjc">
-        </a-plane>
+        <a-plane position="0 0 -3" width="1" height="1" material="shader: flat; src: #githubIcon" class="clickable" data-url="https://github.com/Caseycjc"></a-plane>
 
         <!-- Text for Name and Job Title -->
-        <a-text value="Casey Chase\nSoftware Developer" 
-                position="0 1.5 -2" 
-                align="center" 
-                color="#FFFFFF">
-        </a-text>
+        <a-text value="Casey Chase\nSoftware Developer" position="0 1.5 -2" align="center" color="#FFFFFF"></a-text>
+
+        <!-- Cursor for Mouse Interaction -->
+        <a-camera>
+            <a-cursor></a-cursor>
+        </a-camera>
     </a-scene>
 
     <script>
-        // Add event listeners to handle opening links
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', function() {
             const clickableEntities = document.querySelectorAll('.clickable');
             clickableEntities.forEach(entity => {
-                entity.addEventListener('click', () => {
-                    // Retrieve the URL from the data-url attribute
+                entity.addEventListener('click', function() {
                     const url = entity.getAttribute('data-url');
-                    // Open the URL in a new tab/window
                     window.open(url, '_blank');
                 });
             });
